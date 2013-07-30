@@ -1,0 +1,24 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    <div class="pull-right" ng-switch on="test.available()">
+      <form ng-switch-when="true" class="form-inline">
+        <input type="text" class="input-small" placeholder="Halt">
+        <button class="btn" ng-click="runTest()">Go</button>
+      </form>
+      <span ng-switch-when="false" class="test-results disabled">
+        Not available...
+      </span>
+    </div>
+
+    <a class="accordion-toggle" ng-class="{ disabled: !test.available() }"
+        data-toggle="collapse" href="#{{ test.key }}">
+      <i class="{{ icon }}"></i>
+      {{ test.title }}
+    </a>
+  </div>
+  <div id="{{ test.key }}" class="accordion-body collapse">
+    <div class="accordion-inner">
+      {{ progress }}
+    </div>
+  </div>
+</div>
