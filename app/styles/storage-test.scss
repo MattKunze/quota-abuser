@@ -1,0 +1,12 @@
+div.accordion {
+  a {
+    color: #333;
+  }
+  a.disabled {
+    color: #ccc;
+    cursor: default;
+  }
+  .form-inline {
+    margin: 3px 3px 0 0;
+  }
+}
