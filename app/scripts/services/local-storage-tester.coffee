@@ -6,10 +6,12 @@ angular.module('quotaAbuserApp')
     key: 'localStorage'
     title: 'Local Storage'
     available: -> window.localStorage?
+    reset: ->
+      localStorage.clear()
     runTest: (options) ->
       promise = new $.Deferred
 
-      localStorage.clear()
+      @reset()
 
       count = 0
       _insertChunk = (cb) =>
@@ -17,7 +19,6 @@ angular.module('quotaAbuserApp')
           localStorage.setItem(count++, @oneK)
           promise.notify "Stored: #{count}KB"
           cb() if cb
-          true
         catch error
           promise.reject "Max: #{count}KB - #{error.message}"
 
