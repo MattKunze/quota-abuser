@@ -237,7 +237,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html'],
+          src: ['*.html', 'views/*.html', 'partials/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -255,7 +255,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
-            'styles/fonts/*'
+            'font/*'
           ]
         }, {
           expand: true,
@@ -342,7 +342,7 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'concat',
     'copy',
-    'cdnify',
+    // 'cdnify',
     'ngmin',
     'cssmin',
     'uglify',
