@@ -6,7 +6,13 @@ div.accordion {
     color: #ccc;
     cursor: default;
   }
-  .form-inline {
-    margin: 3px 3px 0 0;
+
+  .accordion-heading {
+    .form-inline {
+      margin: 3px 3px 0 0;
+    }
+    .test-label {
+      padding: 8px 15px;
+    }
   }
 }

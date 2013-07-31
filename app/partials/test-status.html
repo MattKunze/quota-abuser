@@ -1,0 +1,10 @@
+<div ng-switch on="details.status">
+  <span ng-switch-when="undefined">
+    Click Go for the magic
+  </span>
+  <div ng-switch-default>
+    <div>
+      {{ details.status }}
+    </div>
+  </div>
+</div>

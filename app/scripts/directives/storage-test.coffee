@@ -8,26 +8,30 @@ angular.module('quotaAbuserApp')
       key: '@key'
     controller: [ '$scope', '$element', '$attrs', 'testFactory',
       ($scope, $element, $attrs, testFactory) ->
-        $scope.test = testFactory.get $attrs.key
+        test = testFactory.get $attrs.key
+        $scope.details =
+          test: test
+          icon: if test.available() then 'icon-thumbs-up-alt' else 'icon-frown'
 
-        $scope.icon = if $scope.test.available()
-          'icon-thumbs-up-alt'
-        else
-          'icon-frown'
+        apply = (cb) ->
+          phase = $scope.$root.$$phase;
+          console.warn "phase: #{phase}"
+          if phase in [ '$apply', '$digest' ]
+            cb()
+          else
+            $scope.$apply cb
 
-        $scope.progress = 'Waiting'
-
+        $scope.available = -> test.available()
         $scope.runTest = ->
-          $.when($scope.test.runTest())
-            .progress( (details) ->
-              $scope.$apply ->
-                $scope.progress = details
+          options =
+            step: ($element.find '.test-step').val()
+            halt: ($element.find '.test-halt').val()
+          $.when(testFactory.run test, options)
+            .progress( (status) ->
+              console.warn status
+              apply -> $scope.details.status = status
             )
-            .fail (error) ->
-              $scope.$apply ->
-                $scope.progress = error
+            .fail (status) ->
+              apply -> $scope.details.status = status
     ]
-    link: (scope, element, attrs) ->
-      element.bind 'click', ->
-        return false unless scope.test.available()
   )

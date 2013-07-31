@@ -1,24 +1,32 @@
 <div class="accordion-group">
   <div class="accordion-heading">
-    <div class="pull-right" ng-switch on="test.available()">
+    <div class="pull-right" ng-switch on="available()">
       <form ng-switch-when="true" class="form-inline">
-        <input type="text" class="input-small" placeholder="Halt">
+        <label>Step
+          <input type="text" class="test-step input-mini"
+            value="{{ details.test.defaults.step }}">
+        </label>
+        <label>Halt
+          <input type="text" class="test-halt input-mini"
+            value="{{ details.test.defaults.halt }}">
+        </label>
         <button class="btn" ng-click="runTest()">Go</button>
       </form>
-      <span ng-switch-when="false" class="test-results disabled">
+      <div ng-switch-when="false" class="test-label disabled">
         Not available...
-      </span>
+      </div>
     </div>
 
-    <a class="accordion-toggle" ng-class="{ disabled: !test.available() }"
-        data-toggle="collapse" href="#{{ test.key }}">
-      <i class="{{ icon }}"></i>
-      {{ test.title }}
+    <a class="accordion-toggle" ng-class="{ disabled: !available() }"
+        data-toggle="collapse" href="#{{ details.test.key }}">
+      <i class="{{ details.icon }}"></i>
+      <strong>{{ details.test.title }}</strong>
     </a>
   </div>
-  <div id="{{ test.key }}" class="accordion-body collapse">
-    <div class="accordion-inner">
-      {{ progress }}
+  <div id="{{ details.test.key }}" class="accordion-body collapse"
+      ng-class="{ in: available() }" ng-switch on="available()">
+    <div class="accordion-inner" ng-switch-when="true">
+      <test-status></test-status>
     </div>
   </div>
 </div>
