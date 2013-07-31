@@ -114,6 +114,14 @@ module.exports = function (grunt) {
             'cordova_android/assets/www/*'
           ]
         }]
+      },
+      ios: {
+        files: [{
+          dot: true,
+          src: [
+            'cordova_ios/www/*'
+          ]
+        }]
       }
     },
     jshint: {
@@ -282,7 +290,16 @@ module.exports = function (grunt) {
           dot: true,
           cwd: '<%= yeoman.dist %>',
           dest: 'cordova_android/assets/www',
-          src: [ '*' ]
+          src: [ '**/*' ]
+        }]
+      },
+      ios: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.dist %>',
+          dest: 'cordova_ios/www',
+          src: [ '**/*' ]
         }]
       }
     },
@@ -381,8 +398,10 @@ module.exports = function (grunt) {
 
   grunt.registerTask('cordova', [
     'clean:android',
+    'clean:ios',
     'build',
     'copy:android',
+    'copy:ios',
     'shell:android_debug'
   ]);
 
