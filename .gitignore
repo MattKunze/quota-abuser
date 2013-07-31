@@ -4,3 +4,4 @@ dist
 .sass-cache
 app/bower_components
 libpeerconnection.log
+cordova_android/assets/www

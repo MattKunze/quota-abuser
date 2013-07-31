@@ -1,0 +1,23 @@
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/gen/com/onelessham/quota_abuser/R.java \
+ : /Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable-hdpi/ic_launcher.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable-hdpi/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable-ldpi/ic_launcher.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable-ldpi/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable-mdpi/ic_launcher.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable-mdpi/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable-xhdpi/ic_launcher.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/drawable-xhdpi/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/layout/main.xml \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/values/strings.xml \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/res/xml/config.xml \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable-hdpi/ic_launcher.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable-hdpi/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable-ldpi/ic_launcher.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable-ldpi/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable-mdpi/ic_launcher.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable-mdpi/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable-xhdpi/ic_launcher.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/res/drawable-xhdpi/icon.png \
+/Users/matt/Projects/OneLessHam/quota-abuser/cordova_android/bin/AndroidManifest.xml \

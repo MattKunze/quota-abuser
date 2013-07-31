@@ -106,7 +106,15 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      android: {
+        files: [{
+          dot: true,
+          src: [
+            'cordova_android/assets/www/*'
+          ]
+        }]
+      }
     },
     jshint: {
       options: {
@@ -267,6 +275,15 @@ module.exports = function (grunt) {
             'generated/*'
           ]
         }]
+      },
+      android: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.dist %>',
+          dest: 'cordova_android/assets/www',
+          src: [ '*' ]
+        }]
       }
     },
     concurrent: {
@@ -315,6 +332,16 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    shell: {
+      android_debug: {
+        command: 'ant debug',
+        options: {
+          execOptions: {
+            cwd: 'cordova_android'
+          }
+        }
+      }
     }
   });
 
@@ -343,13 +370,20 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'concat',
-    'copy',
+    'copy:dist',
     // 'cdnify',
     'ngmin',
     'cssmin',
     'uglify',
     'rev',
     'usemin'
+  ]);
+
+  grunt.registerTask('cordova', [
+    'clean:android',
+    'build',
+    'copy:android',
+    'shell:android_debug'
   ]);
 
   grunt.registerTask('default', [
