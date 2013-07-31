@@ -10,7 +10,12 @@
           <input type="text" class="test-halt input-mini"
             value="{{ details.test.defaults.halt }}">
         </label>
-        <button class="btn" ng-click="runTest()">Go</button>
+        <ng-switch on="isRunning()">
+          <button class="btn" ng-switch-when="false"
+            ng-click="runTest()">Go</button>
+          <button class="btn" ng-switch-when="true"
+            ng-click="cancelTest()">Cancel</button>
+          </ng-switch>
       </form>
       <div ng-switch-when="false" class="test-label disabled">
         Not available...

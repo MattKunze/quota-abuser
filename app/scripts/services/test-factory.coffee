@@ -17,8 +17,6 @@ angular.module('quotaAbuserApp')
       run: (test, options) ->
         promise = new $.Deferred
 
-        console.warn test
-
         start = new Date
         status =
           status: 'Resetting'
@@ -31,11 +29,18 @@ angular.module('quotaAbuserApp')
           promise.notify status
         ), 100
 
+        cancelled = false
         chunk = _1k
         offset = 0
         size = 1
         suffix = 'k'
         doNext = =>
+          if cancelled
+            promise.reject _.extend status,
+              status: 'Cancelled'
+              elapsed: @getElapsed start
+            return
+
           try
             test.next
               offset: offset++
@@ -48,22 +53,20 @@ angular.module('quotaAbuserApp')
                 _.defer doNext
 
               error: (error) =>
-                _.extend status,
+                promise.reject _.extend status,
                   status: 'Error'
                   message: error
                   elapsed: @getElapsed start
-                promise.reject status
 
           catch error
-            _.extend status,
+            promise.reject _.extend status,
               status: 'Error'
               message: error.message
               elapsed: @getElapsed start
-            promise.reject status
 
         doNext()
 
-        promise.promise()
+        _.extend promise.promise(), cancel: -> cancelled = true
 
       getElapsed: (start) ->
         delta = (new Date) - start

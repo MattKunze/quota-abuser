@@ -15,23 +15,33 @@ angular.module('quotaAbuserApp')
 
         apply = (cb) ->
           phase = $scope.$root.$$phase;
-          console.warn "phase: #{phase}"
           if phase in [ '$apply', '$digest' ]
             cb()
           else
             $scope.$apply cb
 
         $scope.available = -> test.available()
+
+        testPromise = null
+        $scope.isRunning = -> testPromise?
+
         $scope.runTest = ->
           options =
             step: ($element.find '.test-step').val()
             halt: ($element.find '.test-halt').val()
-          $.when(testFactory.run test, options)
+          isRunning = true
+          testPromise = testFactory.run test, options
+          $.when(testPromise)
             .progress( (status) ->
-              console.warn status
               apply -> $scope.details.status = status
             )
-            .fail (status) ->
+            .fail( (status) ->
               apply -> $scope.details.status = status
+            )
+            .always -> 
+              apply -> testPromise = null
+
+        $scope.cancelTest = ->
+          testPromise?.cancel()
     ]
   )
