@@ -253,7 +253,9 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'bower_components/**/*',
+            'bower_components/jquery/jquery.js',
+            'bower_components/angular/angular.js',
+            'bower_components/lodash/dist/lodash.js',
             'images/{,*/}*.{gif,webp}',
             'font/*'
           ]
