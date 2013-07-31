@@ -2,9 +2,18 @@
   <span ng-switch-when="undefined">
     Click Go for the magic
   </span>
-  <div ng-switch-default>
-    <div>
-      {{ details.status }}
-    </div>
-  </div>
+  <dl ng-switch-default class="dl-horizontal">
+    <dt>Status</dt>
+    <dd>{{ details.status.status }}</dd>
+
+    <dt>Elapsed</dt>
+    <dd>{{ details.status.elapsed }}</dd>
+
+    <dt>Size</dt>
+    <dd>{{ details.status.size }}</dd>
+
+    <dt ng-show="!!details.status.message">Message</dt>
+    <dd ng-show="!!details.status.message">{{ details.status.message }}</dd>
+
+  </dl>
 </div>
