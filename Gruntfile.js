@@ -107,19 +107,11 @@ module.exports = function (grunt) {
         }]
       },
       server: '.tmp',
-      android: {
+      cordova: {
         files: [{
           dot: true,
           src: [
-            'cordova_android/assets/www/*'
-          ]
-        }]
-      },
-      ios: {
-        files: [{
-          dot: true,
-          src: [
-            'cordova_ios/www/*'
+            'cordova/www/*'
           ]
         }]
       }
@@ -284,21 +276,12 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      android: {
+      cordova: {
         files: [{
           expand: true,
           dot: true,
           cwd: '<%= yeoman.dist %>',
-          dest: 'cordova_android/assets/www',
-          src: [ '**/*' ]
-        }]
-      },
-      ios: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.dist %>',
-          dest: 'cordova_ios/www',
+          dest: 'cordova/www',
           src: [ '**/*' ]
         }]
       }
@@ -355,7 +338,7 @@ module.exports = function (grunt) {
         command: 'ant debug',
         options: {
           execOptions: {
-            cwd: 'cordova_android'
+            cwd: 'cordova/platforms/android'
           }
         }
       }
@@ -397,12 +380,9 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('cordova', [
-    'clean:android',
-    'clean:ios',
+    'clean:cordova',
     'build',
-    'copy:android',
-    'copy:ios',
-    'shell:android_debug'
+    'copy:cordova'
   ]);
 
   grunt.registerTask('default', [
